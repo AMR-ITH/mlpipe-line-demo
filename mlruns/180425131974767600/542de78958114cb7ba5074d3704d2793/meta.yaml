@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/bits/Sem3/mloops/cl_19/mini_project/mlruns/180425131974767600/542de78958114cb7ba5074d3704d2793/artifacts
+end_time: 1737878921026
+entry_point_name: ''
+experiment_id: '180425131974767600'
+lifecycle_stage: active
+run_id: 542de78958114cb7ba5074d3704d2793
+run_name: 'LR with params:{''C'': 0.1, ''penalty'': ''l1'', ''solver'': ''liblinear''}'
+run_uuid: 542de78958114cb7ba5074d3704d2793
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737878920992
+status: 3
+tags: []
+user_id: amrpu
