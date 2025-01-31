@@ -73,6 +73,8 @@ def register_model(model_name: str, model_info: dict):
         raise
 
 def main():
+    # Set the tracking URI for MLflow to DagsHub
+    mlflow.set_tracking_uri(dagshub_url)
     try:
         model_info_path = 'reports/experiment_info.json'
         model_info = load_model_info(model_info_path)
