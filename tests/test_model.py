@@ -26,7 +26,7 @@ class TestModelLoading(unittest.TestCase):
 
         # Load the new model from MLflow model registry
         cls.new_model_name = "bow_model_github_actions"
-        cls.new_model_version = cls.get_latest_model_version(cls.new_model_name)
+        cls.new_model_version = cls.get_latest_model_version_by_alias(cls.new_model_name)
         cls.new_model_uri = f'models:/{cls.new_model_name}/{cls.new_model_version}'
         cls.new_model = mlflow.pyfunc.load_model(cls.new_model_uri)
 
