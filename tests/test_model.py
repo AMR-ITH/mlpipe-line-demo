@@ -26,7 +26,7 @@ class TestModelLoading(unittest.TestCase):
 
         # Load the new model from MLflow model registry
         cls.new_model_name = "bow_model_github_actions"
-        cls.new_model_version = cls.get_latest_model_version_by_alias(cls.new_model_name)
+        cls.new_model_version = cls.get_latest_model_version(cls.new_model_name)
         cls.new_model_uri = f'models:/{cls.new_model_name}/{cls.new_model_version}'
         cls.new_model = mlflow.pyfunc.load_model(cls.new_model_uri)
 
@@ -37,23 +37,23 @@ class TestModelLoading(unittest.TestCase):
         cls.holdout_data = pd.read_csv('data/processed/test_bow.csv')
 
     @staticmethod
-    def get_latest_model_version_by_alias(model_name, alias="staging"):
-        client = mlflow.MlflowClient()
-        model_version = client.get_model_version_by_alias(name=model_name, alias=alias)
-        return model_version.version
-    # def get_latest_model_version(model_name, tag_key="deployment_stage", tag_value="staging"):
+    # def get_latest_model_version_by_alias(model_name, alias="staging"):
     #     client = mlflow.MlflowClient()
-    #     # Search for model versions with the specified tag
-    #     model_versions = client.search_model_versions(f"name='{model_name}'")
-    #     # Filter versions by the specified tag
-    #     tagged_versions = [
-    #         mv for mv in model_versions if mv.tags.get(tag_key) == tag_value
-    #     ]
-    #     # Sort by version number and return the latest
-    #     if tagged_versions:
-    #         latest_version = max(tagged_versions, key=lambda mv: int(mv.version))
-    #         return latest_version.version
-    #     return None
+    #     model_version = client.get_model_version_by_alias(name=model_name, alias=alias)
+    #     return model_version.version
+    def get_latest_model_version(model_name, tag_key="deployment_stage", tag_value="staging"):
+        client = mlflow.MlflowClient()
+        # Search for model versions with the specified tag
+        model_versions = client.search_model_versions(f"name='{model_name}'")
+        # Filter versions by the specified tag
+        tagged_versions = [
+            mv for mv in model_versions if mv.tags.get(tag_key) == tag_value
+        ]
+        # Sort by version number and return the latest
+        if tagged_versions:
+            latest_version = max(tagged_versions, key=lambda mv: int(mv.version))
+            return latest_version.version
+        return None
 
     
     def test_model_loaded_properly(self):
