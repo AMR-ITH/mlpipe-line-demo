@@ -141,8 +141,10 @@ def main():
                 for param_name, param_value in params.items():
                     mlflow.log_param(param_name, param_value)
             
+
+            input_example = X_test[:1]  # Use the first sample as an example
             # Log model to MLflow
-            mlflow.sklearn.log_model(clf, "model")
+            mlflow.sklearn.log_model(clf, "model",input_example=input_example)
 
             # save model info
             save_model_info(run.info.run_id, "model","reports/experiment_info.json")
