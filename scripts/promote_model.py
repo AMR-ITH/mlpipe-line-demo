@@ -38,5 +38,32 @@ def promote_model():
         value="deployed"
     )
 
+
+
+    #     # Delete the previous alias 'staging'
+    # client.delete_registered_model_alias(
+    #     name=model_name,
+    #     alias="staging"
+    # )
+    # # Set the new alias 'deployment' for the same version
+    # client.set_registered_model_alias(
+    #     name=model_name,
+    #     alias="deployment",
+    #     version=model_version_info.version
+    # )
+    # # Delete the previous tag 'deployment_stage'
+    # client.delete_model_version_tag(
+    #     name=model_name,
+    #     version=model_version_info.version,
+    #     key="deployment_stage"
+    # )
+    # # Add a new tag to the model version
+    # client.set_model_version_tag(
+    #     name=model_name,
+    #     version=model_version_info.version,
+    #     key="deployment_status",
+    #     value="deployed"
+    # )
+
 if __name__ == "__main__":
     promote_model()
