@@ -48,7 +48,7 @@ def promote_model():
     # Set the new alias 'deployment' for the same version
     client.set_registered_model_alias(
         name=model_name,
-        alias="deployment",
+        alias="deploy",
         version=model_version_info.version
     )
     # Delete the previous tag 'deployment_stage'
