@@ -61,7 +61,7 @@ def promote_model():
     client.set_model_version_tag(
         name=model_name,
         version=model_version_info.version,
-        key="deployment_status",
+        key="deployment_statu",
         value="deployed"
     )
 
