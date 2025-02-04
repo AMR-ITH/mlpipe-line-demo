@@ -44,9 +44,15 @@ jobs:
         env:
           DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
         run: python scripts/promote_model.py
+      
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PWD/flask_app" >> $GITHUB_ENV
 
       - name: Run Flask app tests
         if: success()
         env:
           DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
         run: python -m unittest tests/test_flask_app.py
+      
+      - name: Reset PYTHONPATH
+        run: echo "PYTHONPATH=$(dirname $PWD)" >> $GITHUB_ENV
