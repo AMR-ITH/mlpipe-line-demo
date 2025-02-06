@@ -114,6 +114,7 @@ jobs:
         if: success()
         run: docker push 116981799876.dkr.ecr.ap-south-1.amazonaws.com/campusx_ecr:latest
 
+
       - name: Deploy to EC2
         if: success()
         uses: appleboy/ssh-action@v0.1.5
