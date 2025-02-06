@@ -129,6 +129,6 @@ jobs:
             docker pull 116981799876.dkr.ecr.ap-south-1.amazonaws.com/campusx_ecr:latest
             docker stop my-app || true
             docker rm my-app || true
-            docker run -p 80:5000 --name my-app \
+            docker run -d -p 80:5000 --name my-app \
               -e DAGSHUB_PAT=${{ secrets.DAGSHUB_PAT }} \
             116981799876.dkr.ecr.ap-south-1.amazonaws.com/campusx_ecr:latest
