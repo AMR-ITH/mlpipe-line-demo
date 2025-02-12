@@ -17,5 +17,5 @@ if [ "$(docker ps -aq -f name=campusx-app)" ]; then
     docker rm campusx-app
 fi
 
-# Run a new container
-docker run -p 80:5000 -e DAGSHUB_PAT=e691c7193ab61dc9678e31c6b92ded8a65f80697 --name campusx-app 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:latest
+# Run the new container
+docker run -d -p 80:5000 -e DAGSHUB_PAT=a9ccae4d03c5174b543a4167dd282c25cc28c31e --name campusx-app 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:latest
