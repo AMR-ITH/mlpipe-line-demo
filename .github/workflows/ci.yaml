@@ -95,7 +95,7 @@ jobs:
 
 
       # """ ECr to ec2 instance"""
-      # """" docker file to ecr instance """"
+      #  docker file to ecr instance 
 
       - name: Configure AWS credentials
         if: success()
