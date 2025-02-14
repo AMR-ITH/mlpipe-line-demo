@@ -154,7 +154,7 @@ jobs:
       #   if: success()
       #   run: |
       #     aws s3 cp deployment.zip s3://refactored-chainsaw-dvcdb/deployment.zip
-      
+
 
         # Deploy to AWS CodeDeploy using the uploaded ZIP file
       - name: Deploy to AWS CodeDeploy
@@ -164,9 +164,9 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region ap-south-1
           aws deploy create-deployment \
-            --application-name MyDockerApp4 \
+            --application-name MyDockerApp3 \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --deployment-group-name mydockerasgdeploymentgroup \
             --s3-location bucket=campusxcodedeploybucket,key=deployment.zip,bundleType=zip \
             --file-exists-behavior OVERWRITE \
-            --region ap-southeast-2
+            --region ap-south-1
