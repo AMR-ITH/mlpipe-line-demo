@@ -165,7 +165,7 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region ap-south-1
           aws deploy create-deployment \
-            --application-name MyDockerApp3 \
+            --application-name MyDockerApp4 \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --deployment-group-name mydockerasgdeploymentgroup \
             --s3-location bucket=refactored-chainsaw-dvcdb,key=deployment.zip,bundleType=zip \
