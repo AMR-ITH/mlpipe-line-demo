@@ -174,8 +174,9 @@ jobs:
           aws configure set region ap-south-1
           aws deploy create-deployment \
             --application-name MyDockerApp4 \
-            --deployment-config-name CodeDeployDefault.BlueGreen \
-            --deployment-group-name mydockerasgdeploymentgroup \
+            --deployment-group-name bluegreen \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \  
             --s3-location bucket=refactored-chainsaw-dvcdb,key=deployment.zip,bundleType=zip \
             --file-exists-behavior OVERWRITE \
             --region ap-south-1
+
