@@ -97,29 +97,29 @@ jobs:
       # """ ECr to ec2 instance"""
       #  docker file to ecr instance 
 
-      - name: Configure AWS credentials
-        if: success()
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+      # - name: Configure AWS credentials
+      #   if: success()
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-south-1
 
-      - name: Log in to AWS ECR
-        if: success()
-        run: |
-         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 116981799876.dkr.ecr.us-east-1.amazonaws.com
-      - name: Build Docker image
-        if: success()
-        run: docker build -t yamlguru/repo .
+      # - name: Log in to AWS ECR
+      #   if: success()
+      #   run: |
+      #    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 116981799876.dkr.ecr.us-east-1.amazonaws.com
+      # - name: Build Docker image
+      #   if: success()
+      #   run: docker build -t yamlguru/repo .
 
-      - name: Tag Docker image
-        if: success()
-        run: docker tag yamlguru/repo:latest 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:v3.0
+      # - name: Tag Docker image
+      #   if: success()
+      #   run: docker tag yamlguru/repo:latest 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:v3.0
 
-      - name: Push Docker image to AWS ECR
-        if: success()
-        run: docker push 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:v3.0
+      # - name: Push Docker image to AWS ECR
+      #   if: success()
+      #   run: docker push 116981799876.dkr.ecr.us-east-1.amazonaws.com/yamlguru/repo:v3.0
 
 
       # - name: Deploy to EC2
@@ -144,16 +144,16 @@ jobs:
 
 
            # Zip the required files
-      - name: Zip files for deployment
-        if: success()
-        run: |
-          zip -r deployment.zip appspec.yml deploy/scripts/install_dependencies.sh deploy/scripts/start_docker.sh
+      # - name: Zip files for deployment
+      #   if: success()
+      #   run: |
+      #     zip -r deployment.zip appspec.yml deploy/scripts/install_dependencies.sh deploy/scripts/start_docker.sh
 
-        # Upload the ZIP file to S3
-      - name: Upload ZIP to S3
-        if: success()
-        run: |
-          aws s3 cp deployment.zip s3://refactored-chainsaw-dvcdb/deployment.zip
+      #   # Upload the ZIP file to S3
+      # - name: Upload ZIP to S3
+      #   if: success()
+      #   run: |
+      #     aws s3 cp deployment.zip s3://refactored-chainsaw-dvcdb/deployment.zip
 
         # Deploy to AWS CodeDeploy using the uploaded ZIP file
       - name: Deploy to AWS CodeDeploy
