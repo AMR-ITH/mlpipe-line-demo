@@ -167,6 +167,6 @@ jobs:
             --application-name MyDockerApp3 \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --deployment-group-name mydockerasgdeploymentgroup \
-            --s3-location bucket=campusxcodedeploybucket,key=deployment.zip,bundleType=zip \
+            --s3-location bucket=refactored-chainsaw-dvcdb,key=deployment.zip,bundleType=zip \
             --file-exists-behavior OVERWRITE \
             --region ap-south-1
